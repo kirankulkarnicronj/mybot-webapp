@@ -4,60 +4,38 @@ import {
   Toolbar,
   CssBaseline,
   Typography,
-  makeStyles,
   useTheme,
   useMediaQuery,
   Container,
 } from "@material-ui/core";
-import { Link } from "react-router-dom";
 import Button from "@material-ui/core/Button";
 import DrawerComponent from "./Drawer";
-
-const useStyles = makeStyles((theme) => ({
-  navlinks: {
-    marginLeft: theme.spacing(5),
-    display: "flex",
-  },
-  logo: {
-    flexGrow: "1",
-    cursor: "pointer",
-    fontSize: "18px",
-  },
-  link: {
-    textDecoration: "none",
-    color: "white",
-    fontSize: "20px",
-    marginLeft: theme.spacing(20),
-    borderBottom: "1px solid transparent",
-    "&:hover": {
-      color: "yellow",
-      borderBottom: "1px solid white",
-    },
-  },
-  button: {
-    backgroundColor: "#FE9933",
-    color: "#fff",
-  },
-}));
+import "./navbar.css";
 
 function Navbar() {
-  const classes = useStyles();
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
+  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+  const handleclick = () => {
+    window.location.href = "https://discord.gg/y9NGNwT8Ed";
+  };
   return (
-    <AppBar position="static" style={{ backgroundColor: "#060229" }}>
+    <AppBar position="static" className="navbarheader">
       <CssBaseline />
       <Container>
         <Toolbar>
-          <Typography variant="h5" className={classes.logo}>
+          <Typography variant="h5" className="logo">
             MyBotTracker
           </Typography>
           {isMobile ? (
             <DrawerComponent />
           ) : (
-            <div className={classes.navlinks}>
-              <Button variant="contained" className={classes.button}>
+            <div className="navlinks">
+              <Button
+                variant="contained"
+                onClick={handleclick}
+                className="navbarsubmitbutton"
+              >
                 Join Discord
               </Button>
             </div>

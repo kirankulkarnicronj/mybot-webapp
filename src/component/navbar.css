@@ -1,0 +1,28 @@
+.navbarheader {
+  background-color: #060229 !important;
+  padding: 10px;
+}
+.navbarsubmitbutton {
+  background-color: #fe9933 !important;
+  color: #fff !important;
+}
+.links {
+  text-decoration: none;
+  color: white;
+  font-size: 20px;
+  margin-left: 20px;
+  border-bottom: 1px solid transparent;
+}
+.links:hover {
+  color: yellow;
+  border-bottom: 1px solid white;
+}
+.navlinks {
+  margin-left: 10px;
+  display: flex;
+}
+.logo {
+  flex-grow: 1;
+  cursor: pointer;
+  font-size: 18px;
+}

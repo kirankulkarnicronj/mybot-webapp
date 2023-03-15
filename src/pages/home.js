@@ -1,23 +1,40 @@
-import React, { useEffect, useState } from "react";
-import { Typography, TextField, makeStyles, Button } from "@material-ui/core";
+import React, { useState, useEffect } from "react";
+import { TextField, Button } from "@material-ui/core";
 import "./home.css";
-const useStyles = makeStyles((theme) => ({
-  button: {
-    backgroundColor: "#FE9933",
-    color: "#fff",
-    marginLeft: "18px",
-    width: "151px",
-    height: "55px",
-  },
-}));
+import axios from "axios";
+import { useHistory } from "react-router-dom";
 function Home() {
-  const classes = useStyles();
+  const history = useHistory();
   const [inputvalue, setinputvalue] = useState("");
+
+  const [errormessage, setErrorMessage] = useState(false);
   const handlechange = (e) => {
     setinputvalue(e.target.value);
   };
+
+  const handlebutton = async () => {
+    const resp = await axios.post(
+      `http://osrsbottrackerbackend-env.eba-msbngixc.us-east-1.elasticbeanstalk.com/osrsbottracker/api/v1/farm/validate`,
+      { apiFarmKey: inputvalue },
+      {
+        headers: {
+          accept: "application/json",
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    console.log(resp.data.success);
+    if (resp.data.success) {
+      setErrorMessage(false);
+      history.push("/bots");
+    } else {
+      setErrorMessage(true);
+    }
+  };
+
   return (
     <div className="App-header">
+      {errormessage ? <MsgBox msg={"Invalid Api Farm Key"} /> : ""}
       <div className="buttonwraper">
         <TextField
           id="outlined-basic"
@@ -26,11 +43,22 @@ function Home() {
           onChange={handlechange}
           value={inputvalue}
         />
-        <Button variant="contained" className={classes.button}>
+        <Button
+          variant="contained"
+          onClick={handlebutton}
+          className="submitbutton"
+        >
           Submit
         </Button>
       </div>
     </div>
   );
 }
+const MsgBox = ({ msg }) => {
+  return (
+    <div>
+      <div className="errorMsgBody">{msg}</div>
+    </div>
+  );
+};
 export default Home;

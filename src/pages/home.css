@@ -15,6 +15,16 @@
   width: 356px !important;
   height: 20px !important;
 }
+.submitbutton {
+  background-color: #fe9933 !important;
+  color: #fff !important;
+  margin-left: 18px !important;
+  width: 151px !important;
+  height: 55px !important;
+}
+.errorMsgBody {
+  color: red;
+}
 @media (max-width: 720px) {
   .MuiInputBase-input {
     width: 100% !important;
