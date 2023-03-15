@@ -3,33 +3,35 @@ import { TextField, Button } from "@material-ui/core";
 import "./home.css";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
+import * as ApiFormAction from "../store/ApiForm/ApiFormAction";
+import { useDispatch, useSelector } from "react-redux";
 function Home() {
   const history = useHistory();
   const [inputvalue, setinputvalue] = useState("");
-
+  const dispatch = useDispatch();
   const [errormessage, setErrorMessage] = useState(false);
+  const [button, setbuttonAction] = useState(false);
   const handlechange = (e) => {
     setinputvalue(e.target.value);
   };
 
-  const handlebutton = async () => {
-    const resp = await axios.post(
-      `http://osrsbottrackerbackend-env.eba-msbngixc.us-east-1.elasticbeanstalk.com/osrsbottracker/api/v1/farm/validate`,
-      { apiFarmKey: inputvalue },
-      {
-        headers: {
-          accept: "application/json",
-          "Content-Type": "application/json",
-        },
-      }
-    );
-
-    if (resp.data.success) {
+  const datavalue = useSelector(
+    (state) => state?.FetchApiReducer?.apifetch?.data
+  );
+  useEffect(() => {
+    console.log(datavalue, button);
+    if (datavalue && datavalue.success == true && button) {
       setErrorMessage(false);
       history.push("/bots");
-    } else {
+    } else if (datavalue && datavalue.success == false && button) {
       setErrorMessage(true);
     }
+  }, [datavalue]);
+
+  const handlebutton = async () => {
+    await setbuttonAction(true);
+    let payload = { inputvalue };
+    dispatch(ApiFormAction.apiFormKey(payload));
   };
 
   return (
