@@ -23,7 +23,7 @@ function Home() {
         },
       }
     );
-    console.log(resp.data.success);
+
     if (resp.data.success) {
       setErrorMessage(false);
       history.push("/bots");

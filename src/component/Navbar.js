@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   AppBar,
   Toolbar,
@@ -11,37 +11,57 @@ import {
 import Button from "@material-ui/core/Button";
 import DrawerComponent from "./Drawer";
 import "./navbar.css";
-
+import { useLocation } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 function Navbar() {
   const theme = useTheme();
-
+  const history = useHistory();
+  const location = useLocation();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+  const [backtohome, setBacktoHome] = useState(false);
   const handleclick = () => {
     window.location.href = "https://discord.gg/y9NGNwT8Ed";
+  };
+  useEffect(() => {
+    if (location.pathname !== "/") {
+      setBacktoHome(true);
+    } else {
+      setBacktoHome(false);
+    }
+  }, [location]);
+  const handlebackclick = () => {
+    history.push("/");
   };
   return (
     <AppBar position="static" className="navbarheader">
       <CssBaseline />
-      <Container>
-        <Toolbar>
-          <Typography variant="h5" className="logo">
-            MyBotTracker
-          </Typography>
-          {isMobile ? (
-            <DrawerComponent />
-          ) : (
-            <div className="navlinks">
+      <Toolbar>
+        <Typography variant="h5" className="logo">
+          MyBotTracker
+        </Typography>
+        {isMobile ? (
+          <DrawerComponent />
+        ) : (
+          <div className="navlinks">
+            {backtohome && (
               <Button
                 variant="contained"
-                onClick={handleclick}
+                onClick={handlebackclick}
                 className="navbarsubmitbutton"
               >
-                Join Discord
+                Back to Homepage
               </Button>
-            </div>
-          )}
-        </Toolbar>
-      </Container>
+            )}
+            <Button
+              variant="contained"
+              onClick={handleclick}
+              className="navbarsubmitbutton"
+            >
+              Join Discord
+            </Button>
+          </div>
+        )}
+      </Toolbar>
     </AppBar>
   );
 }

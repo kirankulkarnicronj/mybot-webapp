@@ -1,9 +1,12 @@
 import { Typography } from "@material-ui/core";
-
+import SearchwithIcon from "../component/SearchwithIcon";
+import Dropdown from "../component/Dropdown";
 function BotsDashboard() {
   return (
     <div>
-      <h1>dkjhj</h1>
+      <Typography>Bots</Typography>
+      <SearchwithIcon />
+      <Dropdown />
     </div>
   );
 }

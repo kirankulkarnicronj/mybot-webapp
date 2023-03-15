@@ -5,6 +5,8 @@
 .navbarsubmitbutton {
   background-color: #fe9933 !important;
   color: #fff !important;
+  margin-right: 18px !important;
+  padding: 14px 24px !important;
 }
 .links {
   text-decoration: none;
