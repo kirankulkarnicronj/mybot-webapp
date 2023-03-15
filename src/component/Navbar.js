@@ -28,9 +28,12 @@ function Navbar() {
     } else {
       setBacktoHome(false);
     }
+    console.log(location.pathname);
   }, [location]);
+
   const handlebackclick = () => {
-    history.push("/");
+    history.goBack();
+    console.log(history);
   };
   return (
     <AppBar position="static" className="navbarheader">
