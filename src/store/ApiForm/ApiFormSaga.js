@@ -17,7 +17,6 @@ export function* apiFormKey(action) {
       yield put(ACTIONS.apiFormKeySuccess(result));
     }
   } catch (e) {
-    console.log(e);
     yield put(ACTIONS.apiFormKeyError(e.response));
   }
 }
