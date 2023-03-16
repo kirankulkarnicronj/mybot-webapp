@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import InputAdornment from "@material-ui/core/InputAdornment";
-import TextField from "@material-ui/core/TextField";
-import SearchIcon from "@material-ui/icons/Search";
-import { IconButton } from "@material-ui/core";
-import CancelRoundedIcon from "@material-ui/icons/CancelRounded";
+import InputAdornment from "@mui/material/InputAdornment";
+import TextField from "@mui/material/TextField";
+import SearchIcon from "@mui/icons-material/Search";
+import { IconButton } from "@mui/material";
+import CancelRoundedIcon from "@mui/icons-material/CancelRounded";
 export default function SearchwithIcon() {
   const [value, setValue] = useState("");
 
