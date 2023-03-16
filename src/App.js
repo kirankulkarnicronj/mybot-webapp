@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./component/Navbar";
 import Home from "./pages/home";
 import BotsDashboard from "./pages/botsdashboard";
@@ -10,10 +10,11 @@ function App() {
     <Provider store={store}>
       <Router>
         <Navbar />
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route path="/bots" component={BotsDashboard} />
-        </Switch>
+        <Routes>
+          <Route exact path="/" element={<Home />} />
+          {/* <Route exact path="/" component={<Home />} /> */}
+          <Route path="/bots" element={<BotsDashboard />} />
+        </Routes>
       </Router>
     </Provider>
   );
