@@ -9,7 +9,7 @@ import {
 } from "@mui/material";
 import { Link } from "react-router-dom";
 import MenuIcon from "@mui/icons-material/Menu";
-
+import "./drawer.css";
 function DrawerComponent() {
   const [openDrawer, setOpenDrawer] = useState(false);
   return (
@@ -28,7 +28,7 @@ function DrawerComponent() {
       </Drawer>
       <IconButton
         onClick={() => setOpenDrawer(!openDrawer)}
-        style={{ color: "#fff" }}
+        className="icon-btn"
       >
         <MenuIcon />
       </IconButton>
