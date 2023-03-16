@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { TextField, Button } from "@material-ui/core";
+import { TextField, Button } from "@mui/material";
 import "./home.css";
 import axios from "axios";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import * as ApiFormAction from "../store/ApiForm/ApiFormAction";
 import { useDispatch, useSelector } from "react-redux";
 function Home() {
-  const history = useHistory();
+  const navigate = useNavigate();
   const [inputvalue, setinputvalue] = useState("");
   const dispatch = useDispatch();
   const [errormessage, setErrorMessage] = useState(false);
@@ -22,7 +22,7 @@ function Home() {
     console.log(datavalue, button);
     if (datavalue && datavalue.success == true && button) {
       setErrorMessage(false);
-      history.push("/bots");
+      navigate("/bots");
     } else if (datavalue && datavalue.success == false && button) {
       setErrorMessage(true);
     }

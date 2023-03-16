@@ -1,4 +1,4 @@
-import { Typography } from "@material-ui/core";
+import { Typography } from "@mui/material";
 import SearchwithIcon from "../component/SearchwithIcon";
 import Dropdown from "../component/Dropdown";
 function BotsDashboard() {
