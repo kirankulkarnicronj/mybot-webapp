@@ -1,0 +1,16 @@
+.searchfilterwrapper {
+  display: flex;
+}
+
+.refreshbotton {
+  width: 140px !important;
+  height: 55px !important;
+  background-color: #fe9933 !important;
+  color: #fff !important;
+}
+.botsdashboardContainer {
+  padding: 20px !important;
+}
+.botsdashboardicon {
+  margin: 15px 0px;
+}
