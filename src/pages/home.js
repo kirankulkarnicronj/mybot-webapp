@@ -19,7 +19,6 @@ function Home() {
     (state) => state?.FetchApiReducer?.apifetch?.data
   );
   useEffect(() => {
-    console.log(datavalue, button);
     if (datavalue && datavalue.success == true && button) {
       setErrorMessage(false);
       history.push("/bots");
