@@ -107,7 +107,7 @@ export default function Cards({ itemdata, checked }) {
     },
   ];
   return (
-    <Card sx={{ minWidth: 275 }}>
+    <Card sx={{ minWidth: 275, borderRadius: "13px" }}>
       <CardContent>
         <Typography
           variant="h3"
