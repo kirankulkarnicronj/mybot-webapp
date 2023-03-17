@@ -4,6 +4,7 @@ import { takeLatest } from "redux-saga/effects";
 import * as TYPES from "./ApiFormTypes";
 import apiJunction from "../../utils/api";
 import { serverAddress } from "../../config";
+import local from "../../utils/localStorage";
 export function* apiFormKey(action) {
   try {
     const result = yield call(apiJunction.makeRequest, {
@@ -14,10 +15,12 @@ export function* apiFormKey(action) {
       },
     });
     if (result && result.data) {
+      if (result.data.success) {
+        local.setItem("apiform", action.payload.inputvalue);
+      }
       yield put(ACTIONS.apiFormKeySuccess(result));
     }
   } catch (e) {
-    console.log(e);
     yield put(ACTIONS.apiFormKeyError(e.response));
   }
 }

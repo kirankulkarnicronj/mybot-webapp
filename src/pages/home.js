@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { TextField, Button } from "@mui/material";
 import "./home.css";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import * as ApiFormAction from "../store/ApiForm/ApiFormAction";
 import { useDispatch, useSelector } from "react-redux";
@@ -19,11 +18,11 @@ function Home() {
     (state) => state?.FetchApiReducer?.apifetch?.data
   );
   useEffect(() => {
-    console.log(datavalue, button);
-    if (datavalue && datavalue.success == true && button) {
+    if (datavalue && datavalue.success === true && button) {
       setErrorMessage(false);
+
       navigate("/bots");
-    } else if (datavalue && datavalue.success == false && button) {
+    } else if (datavalue && datavalue.success === false && button) {
       setErrorMessage(true);
     }
   }, [datavalue]);

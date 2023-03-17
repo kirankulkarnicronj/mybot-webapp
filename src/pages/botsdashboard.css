@@ -1,0 +1,32 @@
+.searchfilterwrapper {
+  display: flex;
+}
+
+.refreshbotton {
+  width: 140px !important;
+  height: 55px !important;
+  background-color: #fe9933 !important;
+  color: #fff !important;
+}
+.botsdashboardContainer {
+  padding: 20px !important;
+}
+.botsdashboardicon {
+  margin: 15px 0px;
+}
+.sortingbotton {
+  width: 90px !important;
+  height: 55px !important;
+  background-color: #fe9933 !important;
+  color: #fff !important;
+}
+.paginationWrapper {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin-top: 30px !important;
+}
+.paginatiobutton {
+  background-color: #fe9933 !important;
+  color: #fff !important;
+}

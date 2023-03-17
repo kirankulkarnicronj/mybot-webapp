@@ -1,48 +1,29 @@
 import * as React from "react";
-import { useTheme } from "@mui/material/styles";
-import OutlinedInput from "@mui/material/OutlinedInput";
-import InputLabel from "@mui/material/InputLabel";
-import MenuItem from "@mui/material/MenuItem";
-import FormControl from "@mui/material/FormControl";
-import Select from "@mui/material/Select";
-const ITEM_HEIGHT = 48;
-const ITEM_PADDING_TOP = 8;
-const MenuProps = {
-  PaperProps: {
-    style: {
-      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-      width: 250,
-    },
-  },
-};
-const names = [
-  "Oliver Hansen",
-  "Van Henry",
-  "April Tucker",
-  "Ralph Hubbard",
-  "Omar Alexander",
-  "Carlos Abbott",
-  "Miriam Wagner",
-  "Bradley Wilkerson",
-  "Virginia Andrews",
-  "Kelly Snyder",
-];
+import { Box, InputLabel, MenuItem, FormControl, Select } from "@mui/material";
+import "./drawer.css";
 
-export default function UserForm() {
-  const theme = useTheme();
-  const [personName, setPersonName] = React.useState();
+export default function Dropdown({ selectDropDown, selectedvalue }) {
   const handleChange = (event) => {
-    setPersonName(event.target.value);
+    selectDropDown(event.target.value);
   };
+
   return (
-    <div>
-      <FormControl required>
-        <InputLabel id="label">Age</InputLabel>
-        <Select labelId="label" id="select" value="20">
-          <MenuItem value="10">Ten</MenuItem>
-          <MenuItem value="20">Twenty</MenuItem>
+    <Box sx={{ marginY: 1, width: "100%" }}>
+      <FormControl fullWidth>
+        <InputLabel id="demo-simple-select-label">Please select</InputLabel>
+        <Select
+          labelId="demo-simple-select-label"
+          id="demo-simple-select"
+          value={selectedvalue}
+          label="Please select"
+          onChange={handleChange}
+        >
+          <MenuItem value={"Membership"}>Membership</MenuItem>
+          <MenuItem value={"Bot Name"}>Bot Name</MenuItem>
+          <MenuItem value={"Banned Status"}>Banned Status</MenuItem>
+          <MenuItem value={"Last Check-In"}>Last Check-In</MenuItem>
         </Select>
       </FormControl>
-    </div>
+    </Box>
   );
 }

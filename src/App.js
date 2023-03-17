@@ -12,7 +12,6 @@ function App() {
         <Navbar />
         <Routes>
           <Route exact path="/" element={<Home />} />
-          {/* <Route exact path="/" component={<Home />} /> */}
           <Route path="/bots" element={<BotsDashboard />} />
         </Routes>
       </Router>

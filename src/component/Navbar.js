@@ -6,16 +6,15 @@ import {
   Typography,
   useTheme,
   useMediaQuery,
-  Container,
 } from "@mui/material";
 import Button from "@mui/material/Button";
 import DrawerComponent from "./Drawer";
 import "./navbar.css";
 import { useLocation } from "react-router-dom";
-import { useNavigate  } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 function Navbar() {
   const theme = useTheme();
-  const navigate = useNavigate ();
+  const navigate = useNavigate();
   const location = useLocation();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
   const [backtohome, setBacktoHome] = useState(false);
@@ -28,12 +27,10 @@ function Navbar() {
     } else {
       setBacktoHome(false);
     }
-    console.log(location.pathname);
   }, [location]);
 
   const handlebackclick = () => {
     navigate("/");
-    
   };
   return (
     <AppBar position="static" className="navbarheader">
