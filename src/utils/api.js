@@ -1,14 +1,15 @@
 import axios from "./axios";
 import local from "./localStorage";
-import store from "../store";
 
 class ApiJunction {
   makeRequest(params) {
     let token = params.token || local.getItem("token");
+    let apiformkey = local.getItem("apiform");
     axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
     axios.defaults.headers.common["Content-Type"] = `application/json`;
     axios.defaults.headers.common["accept"] = `application/json`;
-    // return axios[params.method](params.url, params.body)
+    axios.defaults.headers.common["apiFarmKey"] = `${JSON.parse(apiformkey)}`;
+
     if (params.method === "get") {
       return axios
         .get(params.url, { params: params.params })

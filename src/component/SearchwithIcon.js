@@ -1,10 +1,7 @@
-import React, { useState } from "react";
-import InputAdornment from "@mui/material/InputAdornment";
-import TextField from "@mui/material/TextField";
-import SearchIcon from "@mui/icons-material/Search";
-import { IconButton } from "@mui/material";
+import React from "react";
+import { Box, IconButton, InputAdornment, TextField } from "@mui/material";
 import CancelRoundedIcon from "@mui/icons-material/CancelRounded";
-import Box from "@mui/material/Box";
+
 export default function SearchwithIcon({ searchvalue, searchdata }) {
   let handlevalue = (e) => {
     searchvalue(e.target.value);
