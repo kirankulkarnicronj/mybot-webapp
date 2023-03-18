@@ -4,7 +4,7 @@
 
 .refreshbotton {
   width: 140px !important;
-  height: 55px !important;
+  height: 56px !important;
   background-color: #fe9933 !important;
   color: #fff !important;
 }
@@ -20,6 +20,10 @@
   background-color: #fe9933 !important;
   color: #fff !important;
 }
+/* .buttonend {
+  display: flex !important;
+  justify-content: end !important;
+} */
 .paginationWrapper {
   display: flex !important;
   align-items: center !important;
@@ -29,4 +33,21 @@
 .paginatiobutton {
   background-color: #fe9933 !important;
   color: #fff !important;
+}
+@media only screen and (min-width: 800px) and (max-width: 1100px) {
+  .refreshbotton {
+    width: 100px !important;
+    height: 50px !important;
+    padding: 10px !important;
+  }
+  .sortingbotton {
+    width: 70px !important;
+    height: 50px !important;
+  }
+  .css-ahj2mt-MuiTypography-root {
+    font-size: 14px !important;
+  }
+  .css-1t6e9jv-MuiCardActions-root {
+    overflow-wrap: break-word !important;
+  }
 }

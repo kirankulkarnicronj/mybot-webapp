@@ -78,13 +78,15 @@ function BotsDashboard() {
   const dispatch = useDispatch();
 
   const [player, setPlayer] = useState();
-  const [selectedvalue, setSeletedvalue] = useState();
+  const [selectedvalue, setSeletedvalue] = useState("Bot Name");
   const [searchdata, setSearchData] = useState();
   const [sorting, setSorting] = useState();
   const [page, setPage] = useState(1);
-  const [size, setSize] = useState(6);
+  const [size, setSize] = useState(24);
   const [checked, setChecked] = useState();
+  const [clickCount, setClickCount] = useState(0);
   const [refreshdata, setRefreshdata] = useState(false);
+  const [error, setErrorHandle] = useState("");
 
   const handleApi = () => {
     let payload = {
@@ -111,8 +113,6 @@ function BotsDashboard() {
   useEffect(() => {
     if (playerdata) {
       setPlayer(playerdata);
-    } else {
-      navigate("/");
     }
   }, [playerdata]);
 
@@ -120,14 +120,35 @@ function BotsDashboard() {
     setSeletedvalue(args);
   };
   const handlesearch = (values) => {
+    // Access input value
+    const query = values;
+
+    // Create copy of item list
+    var updatedList = [...player];
+    // Include all elements which includes the search query
+    updatedList = updatedList.filter((item) => {
+      return item.name.toLowerCase().indexOf(query.toLowerCase()) !== -1;
+    });
+
+    if (!values) {
+      setPlayer(playerdata);
+    } else {
+      setPlayer(updatedList);
+    }
     setSearchData(values);
   };
   const handleBoxClick = () => {
     navigate("/");
   };
   const handleRefresh = () => {
-    setRefreshdata(true);
-    setPage(1);
+    setClickCount(clickCount + 1);
+    if (clickCount >= 4) {
+      setErrorHandle("Refresh clicked too many times");
+    } else {
+      setErrorHandle("");
+      setRefreshdata(true);
+      setPage(1);
+    }
   };
   const handleDecentOrder = () => {
     setSorting("DESC");
@@ -170,18 +191,21 @@ function BotsDashboard() {
           </g>
         </svg>
       </Box>
-      <FormGroup aria-label="position">
-        <Stack
-          direction={{ sm: "column", xl: "row" }}
-          spacing={6}
-          alignItems="center"
-        >
-          <Stack
-            direction={{ sm: "column", xl: "row" }}
-            spacing={5}
-            alignItems="center"
+
+      <Grid
+        container
+        spacing={{ xs: 2, md: 3 }}
+        columns={{ xs: 4, sm: 2, md: 12 }}
+        alignItems="center"
+        justifyContent="center"
+      >
+        <Grid item xs={4}>
+          <Grid
+            container
+            rowSpacing={1}
+            columnSpacing={{ xs: 1, sm: 2, md: 3 }}
           >
-            <Box>
+            <Grid item xs={6} md={4} sm={4}>
               <Button
                 variant="contained"
                 className="refreshbotton"
@@ -190,9 +214,8 @@ function BotsDashboard() {
               >
                 Refresh
               </Button>
-            </Box>
-
-            <Box>
+            </Grid>
+            <Grid item xs={6} md={3} sm={4}>
               <Button
                 variant="contained"
                 onClick={handleDecentOrder}
@@ -273,8 +296,9 @@ function BotsDashboard() {
                   </g>
                 </svg>
               </Button>
-            </Box>
-            <Box>
+            </Grid>
+            <Grid item xs={6} md={3} sm={4}>
+              {" "}
               <Button
                 variant="contained"
                 onClick={handleAscOrder}
@@ -329,39 +353,63 @@ function BotsDashboard() {
                   </g>
                 </svg>
               </Button>
-            </Box>
-          </Stack>
+            </Grid>
+          </Grid>
+        </Grid>
 
-          <Box sx={{ marginY: 1 }}>
-            <Stack
-              direction={{ sm: "column", xl: "row" }}
-              spacing={8}
-              alignItems="center"
+        <Grid item xs={6}>
+          <Box>
+            <Grid
+              container
+              spacing={{ xs: 2, md: 3 }}
+              columns={{ xs: 4, sm: 2, md: 12 }}
             >
-              <SearchwithIcon
-                searchvalue={handlesearch}
-                searchdata={searchdata}
-              />
-              <Dropdown
-                selectDropDown={onSelectvalue}
-                selectedvalue={selectedvalue}
-              />
-            </Stack>
+              <Grid item xs={6}>
+                {" "}
+                <SearchwithIcon
+                  searchvalue={handlesearch}
+                  searchdata={searchdata}
+                />
+              </Grid>
+              <Grid item xs={6}>
+                {" "}
+                <Dropdown
+                  selectDropDown={onSelectvalue}
+                  selectedvalue={selectedvalue}
+                />
+              </Grid>
+            </Grid>
           </Box>
-          <Box sx={{ marginY: 1 }}>
-            <Stack direction="row" spacing={1} alignItems="center">
+        </Grid>
+        <Grid item xs={2}>
+          <Box>
+            <Stack
+              direction="row"
+              spacing={1}
+              alignItems="center"
+              justifyContent={"center"}
+            >
               <Typography>Hide Bot Name</Typography>
               <FormControlLabel
                 control={<IOSSwitch onChange={handleSwitch} sx={{ m: 1 }} />}
               />
             </Stack>
           </Box>
-        </Stack>
-      </FormGroup>
+        </Grid>
+      </Grid>
 
-      <Typography mt={10} variant="h5" component="h1">
-        Result for BOT NAME #2
-      </Typography>
+      {searchdata && (
+        <Typography mt={10} variant="h5" component="h1">
+          Result for {searchdata}
+        </Typography>
+      )}
+      {error ? (
+        <Typography style={{ color: "red", textAlign: "center" }} mt={4}>
+          {error}
+        </Typography>
+      ) : (
+        ""
+      )}
 
       <Box mt={5}>
         <Grid
@@ -387,7 +435,7 @@ function BotsDashboard() {
       {/* pagination */}
       <Box className="paginationWrapper">
         <Stack
-          direction={{ sm: "row", xl: "row" }}
+          direction={{ sm: "row", md: "row" }}
           spacing={3}
           alignItems="center"
         >
@@ -399,7 +447,7 @@ function BotsDashboard() {
             <KeyboardArrowLeft />
           </Button>
           <Typography>
-            Page {paginationdata?.currentPage || "1"} out of
+            Page {paginationdata?.currentPage || "1"} out of &nbsp;
             {paginationdata?.totalPages || "1"}
           </Typography>
           <Button
