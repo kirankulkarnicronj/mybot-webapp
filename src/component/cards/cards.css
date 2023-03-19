@@ -3,5 +3,10 @@
   padding: 0px 5px !important;
 }
 .imgIcon {
-  margin-right: 6px;
+  width: 16px;
+  margin: 3px 6px;
+  height: 16px;
+}
+.card-content {
+  border-bottom: 3px solid #edf0f7 !important;
 }
