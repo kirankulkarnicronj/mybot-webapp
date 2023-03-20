@@ -197,7 +197,7 @@ export default function Cards({ itemdata, checked }) {
               </Typography>
             </Grid>
             <Grid item xs={3}>
-              <Typography size="small" className="cardHeaders">
+              <Typography size="small" className="cardHeaders1">
                 Membership: <b>{itemdata?.membershipDays || ""}</b>
               </Typography>
             </Grid>
