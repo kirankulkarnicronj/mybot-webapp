@@ -79,12 +79,13 @@ function BotsDashboard() {
 
   const [player, setPlayer] = useState();
   const [selectedvalue, setSeletedvalue] = useState("Bot Name");
+  const [selectedvalueEnum, setSeletedValueEnum] = useState("BOT_NAME");
   const [searchdata, setSearchData] = useState();
   const [sorting, setSorting] = useState();
-  const [page, setPage] = useState(1);
+  const [page, setPage] = useState(0);
   const [size, setSize] = useState(24);
   const [checked, setChecked] = useState();
-  const [clickCount, setClickCount] = useState(0);
+  // const [clickCount, setClickCount] = useState(0);
   const [refreshdata, setRefreshdata] = useState(false);
   const [error, setErrorHandle] = useState("");
 
@@ -93,7 +94,7 @@ function BotsDashboard() {
       order: sorting || "ASC",
       page: page,
       size: size,
-      sortFilter: "BAN_STATUS",
+      sortFilter: selectedvalueEnum,
     };
 
     dispatch(ApiformDashboardAction.apiFormKeyDashboard(payload));
@@ -101,7 +102,7 @@ function BotsDashboard() {
   useEffect(() => {
     setPlayer([]);
     handleApi();
-  }, [page, sorting, refreshdata]);
+  }, [page, sorting, refreshdata,selectedvalueEnum]);
 
   const playerdata = useSelector(
     (state) => state?.FetchApiDashboardReducer?.apifetch?.data?.players
@@ -117,7 +118,30 @@ function BotsDashboard() {
   }, [playerdata]);
 
   const onSelectvalue = (args) => {
-    setSeletedvalue(args);
+    console.log("Arguments",args)
+    if(args === "Membership")
+    {
+      const value1= "MEMBERSHIP"
+      setSeletedValueEnum(value1)
+      setSeletedvalue(args);
+
+    }else if(args === "Bot Name")
+    {
+      const value1= "BOT_NAME"
+      setSeletedValueEnum(value1)
+      setSeletedvalue(args);
+    }else if(args === "Banned Status")
+    {
+      const value1= "BAN_STATUS"
+      setSeletedValueEnum(value1)
+      setSeletedvalue(args);
+
+    }else if(args === "Last Check-In")
+    {
+      const value1= "LAST_CHECK_IN"
+      setSeletedValueEnum(value1)
+      setSeletedvalue(args);
+    }
   };
   const handlesearch = (values) => {
     // Access input value
@@ -141,14 +165,18 @@ function BotsDashboard() {
     navigate("/");
   };
   const handleRefresh = () => {
-    setClickCount(clickCount + 1);
-    if (clickCount >= 4) {
-      setErrorHandle("Refresh clicked too many times");
-    } else {
-      setErrorHandle("");
+    // setClickCount(clickCount + 1);
+    // if (clickCount >= 4) {
+    //   setErrorHandle("Refresh clicked too many times");
+    // } else {
+      // setErrorHandle("");
+      if(page === 0)
+      {
+        window.location.reload() 
+      }
       setRefreshdata(true);
-      setPage(1);
-    }
+      setPage(0);
+    // }
   };
   const handleDecentOrder = () => {
     setSorting("DESC");
@@ -447,8 +475,8 @@ function BotsDashboard() {
             <KeyboardArrowLeft />
           </Button>
           <Typography>
-            Page {paginationdata?.currentPage || "1"} out of &nbsp;
-            {paginationdata?.totalPages || "1"}
+            Page {paginationdata?.currentPage || "0"} out of &nbsp;
+            {paginationdata?.totalPages || "0"}
           </Typography>
           <Button
             variant="contained"
