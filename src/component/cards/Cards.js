@@ -111,7 +111,7 @@ export default function Cards({ itemdata, checked }) {
       <CardContent className="card-content">
         <Typography
           variant="h3"
-          sx={{ fontSize: 18, margin: 2 }}
+          sx={{ fontSize: "16px", margin: 2 }}
           style={{ display: "flex", justifyContent: "center" }}
         >
           <Box className="botsicon" style={{ margin: "-7px 10px" }}>
@@ -197,7 +197,7 @@ export default function Cards({ itemdata, checked }) {
               </Typography>
             </Grid>
             <Grid item xs={3}>
-              <Typography size="small" className="cardHeaders">
+              <Typography size="small" className="cardHeaders1">
                 Membership: <b>{itemdata?.membershipDays || ""}</b>
               </Typography>
             </Grid>
@@ -209,6 +209,7 @@ export default function Cards({ itemdata, checked }) {
             <Grid item xs={6}>
               <Typography size="small" className="cardHeaders">
                 Last Check-In:{" "}
+                {/* <b>{(itemdata?.lastCheckIn).substring(11, 19) || ""}  {(itemdata?.lastCheckIn).substring(0,9) || ""}</b> */}
                 <b>{(itemdata?.lastCheckIn).substring(11, 19) || ""}</b>
               </Typography>
             </Grid>
