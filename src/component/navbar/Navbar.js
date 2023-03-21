@@ -8,7 +8,7 @@ import {
   useMediaQuery,
 } from "@mui/material";
 import Button from "@mui/material/Button";
-import DrawerComponent from "./Drawer";
+import DrawerComponent from "../Drawer/Drawer";
 import "./navbar.css";
 import { useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";

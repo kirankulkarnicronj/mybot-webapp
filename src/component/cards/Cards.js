@@ -12,102 +12,111 @@ export default function Cards({ itemdata, checked }) {
   let IconData = [
     {
       iconimage: "/assets/icons/skill_icon_Attack.png",
-      values: itemdata?.attack || "",
+      values: itemdata?.attack || "0",
     },
     {
       iconimage: "/assets/icons/skill_icon_Strength.png",
-      values: itemdata?.strength || "",
+      values: itemdata?.strength || "0",
     },
     {
       iconimage: "/assets/icons/skill_icon_Defence.png",
-      values: itemdata?.defense || "",
+      values: itemdata?.defense || "0",
     },
     {
       iconimage: "/assets/icons/skill_icon_Ranged.png",
-      values: itemdata?.range || "",
+      values: itemdata?.range || "0",
     },
     {
       iconimage: "/assets/icons/skill_icon_Magic.png",
-      values: itemdata?.magic || "",
+      values: itemdata?.magic || "0",
     },
     {
       iconimage: "/assets/icons/skill_icon_Firemaking.png",
-      values: itemdata?.firemaking || "",
+      values: itemdata?.firemaking || "0",
     },
     // 2nd row
     {
       iconimage: "/assets/icons/skill_icon_Hitpoints.png",
-      values: itemdata?.hitpoints || "",
+      values: itemdata?.hitpoints || "0",
     },
     {
       iconimage: "/assets/icons/skill_icon_Agility.png",
-      values: itemdata?.agility || "",
+      values: itemdata?.agility || "0",
     },
     {
       iconimage: "/assets/icons/skill_icon_Herblore.png",
-      values: itemdata?.herblore || "",
+      values: itemdata?.herblore || "0",
     },
     {
       iconimage: "/assets/icons/skill_icon_Thieving.png",
-      values: itemdata?.thieving || "",
+      values: itemdata?.thieving || "0",
     },
     {
       iconimage: "/assets/icons/skill_icon_Crafting.png",
-      values: itemdata?.crafting || "",
+      values: itemdata?.crafting || "0",
     },
     {
       iconimage: "/assets/icons/skill_icon_Woodcutting.png",
-      values: itemdata?.woodcutting || "",
+      values: itemdata?.woodcutting || "0",
     },
     // 3rd row
     {
       iconimage: "/assets/icons/skill_icon_Hunter.png",
-      values: itemdata?.hunter || "",
+      values: itemdata?.hunter || "0",
     },
     {
       iconimage: "/assets/icons/skill_icon_Mining.png",
-      values: itemdata?.mining || "",
+      values: itemdata?.mining || "0",
     },
     {
       iconimage: "/assets/icons/skill_icon_Smithing.png",
-      values: itemdata?.smithing || "",
+      values: itemdata?.smithing || "0",
     },
     {
       iconimage: "/assets/icons/skill_icon_Fishing.png",
-      values: itemdata?.fishing || "",
+      values: itemdata?.fishing || "0",
     },
     {
       iconimage: "/assets/icons/skill_icon_Cooking.png",
-      values: itemdata?.cooking || "",
+      values: itemdata?.cooking || "0",
     },
     {
       iconimage: "/assets/icons/skill_icon_Farming.png",
-      values: itemdata?.farming || "",
+      values: itemdata?.farming || "0",
     },
     // 4th
     {
       iconimage: "/assets/icons/skill_icon_Runecraft.png",
-      values: itemdata?.runecrafting || "",
+      values: itemdata?.runecrafting || "0",
     },
     {
       iconimage: "/assets/icons/skill_icon_Construction.png",
-      values: itemdata?.construction || "",
+      values: itemdata?.construction || "0",
     },
     {
       iconimage: "/assets/icons/skill_icon_Prayer.png",
-      values: itemdata?.prayer || "",
+      values: itemdata?.prayer || "0",
     },
     {
       iconimage: "/assets/icons/skill_icon_Fletching.png",
-      values: itemdata?.fletching || "",
+      values: itemdata?.fletching || "0",
     },
     {
       iconimage: "/assets/icons/skill_icon_Slayer.png",
-      values: itemdata?.slayer || "",
+      values: itemdata?.slayer || "0",
+    },
+    {
+      iconimage: "/assets/icons/Quests_Points.webp",
+      values: itemdata?.questPoints || "0",
     },
   ];
   return (
-    <Card sx={{ borderRadius: "13px" }}>
+    <Card
+      sx={{
+        borderRadius: "13px",
+        width: "388px",
+      }}
+    >
       <CardContent className="card-content">
         <Typography
           variant="h3"
@@ -179,9 +188,9 @@ export default function Cards({ itemdata, checked }) {
             spacing={{ xs: 2, md: 3 }}
             columns={{ xs: 4, sm: 8, md: 12 }}
           >
-            <Grid item xs={5}>
+            <Grid item xs={4} className="gridCardBody">
               <Typography size="small" className="cardHeaders">
-                Ban Status:{" "}
+                Ban?:{" "}
                 <b>
                   {itemdata?.ban ? (
                     <b style={{ color: "red" }}>Ban</b>
@@ -191,26 +200,26 @@ export default function Cards({ itemdata, checked }) {
                 </b>
               </Typography>
             </Grid>
-            <Grid item xs={4}>
+            <Grid item xs={8} className="gridCardBody">
               <Typography size="small" className="cardHeaders">
-                Quests Point: <b>{itemdata?.questPoints}</b>
+                Membership:{" "}
+                <b>
+                  {itemdata?.membershipDays
+                    ? itemdata.membershipDays
+                    : "Unknown" || ""}
+                </b>
               </Typography>
             </Grid>
-            <Grid item xs={3}>
-              <Typography size="small" className="cardHeaders1">
-                Membership: <b>{itemdata?.membershipDays || ""}</b>
-              </Typography>
-            </Grid>
-            <Grid item xs={5}>
+            <Grid item xs={4} className="gridCardBody">
               <Typography size="small" className="cardHeaders">
                 Gold: <b>{itemdata?.coins || ""}</b>
               </Typography>
             </Grid>
-            <Grid item xs={6}>
+            <Grid item xs={8} className="gridCardBody">
               <Typography size="small" className="cardHeaders">
                 Last Check-In:{" "}
                 {/* <b>{(itemdata?.lastCheckIn).substring(11, 19) || ""}  {(itemdata?.lastCheckIn).substring(0,9) || ""}</b> */}
-                <b>{(itemdata?.lastCheckIn).substring(11, 19) || ""}</b>
+                <b>{(itemdata?.lastCheckIn).substring(5, 19) || ""}</b>
               </Typography>
             </Grid>
           </Grid>
@@ -221,12 +230,16 @@ export default function Cards({ itemdata, checked }) {
           container
           spacing={{ xs: 2, md: 3 }}
           columns={{ xs: 4, sm: 4, md: 12 }}
-          style={{ textAlign: "center" }}
+          style={{ textAlign: "center", marginTop: "-14px" }}
         >
           {IconData.map((item, index) => {
             return (
               <Grid style={{ display: "flex" }} item xs={1} md={2} key={index}>
-                <img className="imgIcon" src={item.iconimage} />
+                <img
+                  alt={item.values}
+                  className="imgIcon"
+                  src={item.iconimage}
+                />
                 <Typography>
                   <b>{item.values}</b>
                 </Typography>
