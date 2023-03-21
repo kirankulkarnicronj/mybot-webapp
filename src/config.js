@@ -1,3 +1,3 @@
 const serverAddress =
-  "http://osrsbottrackerbackend-env.eba-msbngixc.us-east-1.elasticbeanstalk.com/osrsbottracker";
+  "https://dev.mybottracker.com/osrsbottracker";
 export { serverAddress };

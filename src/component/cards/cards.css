@@ -9,13 +9,15 @@
 }
 .imgIcon {
   width: 16px;
-  margin: 3px 6px;
+  margin: 3px 2px;
   height: 16px;
 }
 .card-content {
   border-bottom: 3px solid #edf0f7 !important;
-  margin: 10px 0px !important;
+  /* margin: 10px 0px !important; */
+  width: 388px; 
 }
 .css-46bh2p-MuiCardContent-root {
-  padding: 10px !important;
+  padding: 5px !important;
 }
+

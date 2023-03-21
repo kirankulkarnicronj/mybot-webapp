@@ -185,7 +185,7 @@ function BotsDashboard() {
     setSorting("ASC");
   };
   const handleback = () => {
-    setPage((prev) => (prev == 1 ? prev : prev - 1));
+    setPage((prev) => (prev == 0 ? prev : prev - 1));
   };
   const handlenext = () => {
     setPage((prev) => prev + 1);
@@ -448,7 +448,7 @@ function BotsDashboard() {
           {player?.length > 0 ? (
             player.map((item) => {
               return (
-                <Grid item xs={4}>
+                <Grid item>
                   <Cards itemdata={item} checked={checked} />
                 </Grid>
               );
@@ -477,6 +477,7 @@ function BotsDashboard() {
           <Typography>
             Page {paginationdata?.currentPage || "0"} out of &nbsp;
             {paginationdata?.totalPages || "0"}
+
           </Typography>
           <Button
             variant="contained"

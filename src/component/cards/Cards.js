@@ -105,9 +105,13 @@ export default function Cards({ itemdata, checked }) {
       iconimage: "/assets/icons/skill_icon_Slayer.png",
       values: itemdata?.slayer || "",
     },
+    {
+      iconimage: "/assets/icons/Quests_Points.webp",
+      values: itemdata?.questPoints || "",
+    },
   ];
   return (
-    <Card sx={{ borderRadius: "13px" }}>
+    <Card sx={{ borderRadius: "13px", width: "388px" }}>
       <CardContent className="card-content">
         <Typography
           variant="h3"
@@ -179,9 +183,9 @@ export default function Cards({ itemdata, checked }) {
             spacing={{ xs: 2, md: 3 }}
             columns={{ xs: 4, sm: 8, md: 12 }}
           >
-            <Grid item xs={5}>
+            <Grid item xs={4}>
               <Typography size="small" className="cardHeaders">
-                Ban Status:{" "}
+                Ban?:{" "}
                 <b>
                   {itemdata?.ban ? (
                     <b style={{ color: "red" }}>Ban</b>
@@ -191,37 +195,33 @@ export default function Cards({ itemdata, checked }) {
                 </b>
               </Typography>
             </Grid>
-            <Grid item xs={4}>
+            <Grid item xs={8}>
               <Typography size="small" className="cardHeaders">
-                Quests Point: <b>{itemdata?.questPoints}</b>
+                Membership: <b>{itemdata?.membershipDays  ? (itemdata.membershipDays) : ("Unknown") || ""}</b>
               </Typography>
             </Grid>
-            <Grid item xs={3}>
-              <Typography size="small" className="cardHeaders1">
-                Membership: <b>{itemdata?.membershipDays || ""}</b>
-              </Typography>
-            </Grid>
-            <Grid item xs={5}>
+            <Grid item xs={4}>
               <Typography size="small" className="cardHeaders">
                 Gold: <b>{itemdata?.coins || ""}</b>
               </Typography>
             </Grid>
-            <Grid item xs={6}>
+            <Grid item xs={8}>
               <Typography size="small" className="cardHeaders">
                 Last Check-In:{" "}
                 {/* <b>{(itemdata?.lastCheckIn).substring(11, 19) || ""}  {(itemdata?.lastCheckIn).substring(0,9) || ""}</b> */}
-                <b>{(itemdata?.lastCheckIn).substring(11, 19) || ""}</b>
+                <b>{(itemdata?.lastCheckIn).substring(5, 19) || ""}</b>
               </Typography>
             </Grid>
           </Grid>
         </CardActions>
+
       </CardContent>
       <CardActions>
         <Grid
           container
           spacing={{ xs: 2, md: 3 }}
           columns={{ xs: 4, sm: 4, md: 12 }}
-          style={{ textAlign: "center" }}
+          style={{ textAlign: "center", marginTop: "-14px" }}
         >
           {IconData.map((item, index) => {
             return (
