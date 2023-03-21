@@ -14,10 +14,6 @@
 }
 .card-content {
   border-bottom: 3px solid #edf0f7 !important;
-  /* margin: 10px 0px !important; */
-  width: 388px; 
-}
-.css-46bh2p-MuiCardContent-root {
+  width: 388px;
   padding: 5px !important;
 }
-

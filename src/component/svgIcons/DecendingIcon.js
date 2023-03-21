@@ -1,0 +1,82 @@
+import React from "react";
+
+export default function DecendingIcon() {
+  return (
+    <>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="26.182"
+        height="19.291"
+        viewBox="0 0 26.182 19.291"
+      >
+        <g id="sort-descending" transform="translate(-2.998 -4)">
+          <g
+            id="Group_47475"
+            data-name="Group 47475"
+            transform="translate(3.001 20.535)"
+          >
+            <path
+              id="Path_42264"
+              data-name="Path 42264"
+              d="M20.913,18.756H4.378a1.378,1.378,0,1,1,0-2.756H20.913a1.378,1.378,0,0,1,0,2.756Z"
+              transform="translate(-3 -16)"
+              fill="#fff"
+            />
+          </g>
+          <g
+            id="Group_47476"
+            data-name="Group 47476"
+            transform="translate(3.001 13.645)"
+          >
+            <path
+              id="Path_42265"
+              data-name="Path 42265"
+              d="M16.779,13.756H4.378a1.378,1.378,0,1,1,0-2.756h12.4a1.378,1.378,0,1,1,0,2.756Z"
+              transform="translate(-3 -11)"
+              fill="#fff"
+            />
+          </g>
+          <g
+            id="Group_47477"
+            data-name="Group 47477"
+            transform="translate(2.998 6.753)"
+          >
+            <path
+              id="Path_42266"
+              data-name="Path 42266"
+              d="M12.646,8.756H4.379A1.3,1.3,0,0,1,3,7.379,1.3,1.3,0,0,1,4.379,6h8.267a1.3,1.3,0,0,1,1.378,1.378,1.3,1.3,0,0,1-1.378,1.378Z"
+              transform="translate(-2.998 -5.998)"
+              fill="#fff"
+            />
+          </g>
+          <g
+            id="Group_47478"
+            data-name="Group 47478"
+            transform="translate(22.289 4)"
+          >
+            <path
+              id="Path_42267"
+              data-name="Path 42267"
+              d="M18.379,17.779A1.3,1.3,0,0,1,17,16.4V5.378a1.378,1.378,0,1,1,2.756,0V16.4a1.3,1.3,0,0,1-1.378,1.378Z"
+              transform="translate(-16.998 -4)"
+              fill="#fff"
+            />
+          </g>
+          <g
+            id="Group_47479"
+            data-name="Group 47479"
+            transform="translate(18.171 4)"
+          >
+            <path
+              id="Path_42268"
+              data-name="Path 42268"
+              d="M23.642,10.889a1.251,1.251,0,0,1-.965-.413L19.508,7.307l-3.169,3.169A1.364,1.364,0,1,1,14.41,8.547l4.134-4.134a1.332,1.332,0,0,1,1.929,0l4.134,4.134a1.332,1.332,0,0,1,0,1.929A1.251,1.251,0,0,1,23.642,10.889Z"
+              transform="translate(-14.01 -4)"
+              fill="#fff"
+            />
+          </g>
+        </g>
+      </svg>
+    </>
+  );
+}
