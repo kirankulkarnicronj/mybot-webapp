@@ -6,7 +6,12 @@ import {
   Switch,
   Stack,
   Grid,
+  Modal,
+  IconButton,
+  TextField,
 } from "@mui/material";
+import React from "react";
+import CloseIcon from "@mui/icons-material/Close";
 import SearchwithIcon from "../../component/search/SearchwithIcon";
 import Dropdown from "../../component/selectdropdown/Dropdown";
 import {
@@ -24,6 +29,7 @@ import { useDispatch, useSelector } from "react-redux";
 import RefreshIcon from "../../component/svgIcons/RefreshIcon";
 import DecendingIcon from "../../component/svgIcons/DecendingIcon";
 import AscIcon from "../../component/svgIcons/AscIcon";
+import AddIcon from "@mui/icons-material/Add";
 
 const IOSSwitch = styled((props) => (
   <Switch focusVisibleClassName=".Mui-focusVisible" disableRipple {...props} />
@@ -81,6 +87,8 @@ function BotsDashboard() {
   const dispatch = useDispatch();
 
   const [player, setPlayer] = useState();
+  const [open1, setOpen] = React.useState(false);
+  const [inputvalue, setinputvalue] = useState("");
   const [selectedvalue, setSeletedvalue] = useState("Bot Name");
   const [selectedvalueEnum, setSeletedValueEnum] = useState("BOT_NAME");
   const [searchdata, setSearchData] = useState();
@@ -88,9 +96,21 @@ function BotsDashboard() {
   const [page, setPage] = useState(0);
   const [size, setSize] = useState(24);
   const [checked, setChecked] = useState();
-  // const [clickCount, setClickCount] = useState(0);
   const [refreshdata, setRefreshdata] = useState(false);
   const [error, setErrorHandle] = useState("");
+
+  const cardLayout = {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    width: 400,
+    bgcolor: "background.paper",
+    boxShadow: 24,
+    p: 4,
+  };
+
+  const handleOpen = () => setOpen(true);
 
   const handleApi = () => {
     let payload = {
@@ -162,17 +182,11 @@ function BotsDashboard() {
     navigate("/");
   };
   const handleRefresh = () => {
-    // setClickCount(clickCount + 1);
-    // if (clickCount >= 4) {
-    //   setErrorHandle("Refresh clicked too many times");
-    // } else {
-    // setErrorHandle("");
     if (page === 0) {
       window.location.reload();
     }
     setRefreshdata(true);
     setPage(0);
-    // }
   };
   const handleDecentOrder = () => {
     setSorting("DESC");
@@ -189,6 +203,13 @@ function BotsDashboard() {
   const handleSwitch = (e) => {
     setChecked(e.target.checked);
   };
+  const handleClose = () => {
+    setOpen(false);
+  };
+  const handlechange = (e) => {
+    setinputvalue(e.target.value);
+  };
+
   return (
     <Box className="botsdashboardContainer">
       <Box className="botsdashboardicon" onClick={handleBoxClick}>
@@ -218,23 +239,24 @@ function BotsDashboard() {
                 Refresh
               </Button>
             </Grid>
-            <Grid item xs={6} md={3} sm={4}>
+
+            <Grid item xs={6} md={4} sm={4}>
+              <Button
+                variant="contained"
+                className="refreshbotton"
+                onClick={handleRefresh}
+              >
+                Clear
+              </Button>
+            </Grid>
+
+            <Grid item xs={5} md={2} sm={3}>
               <Button
                 variant="contained"
                 onClick={handleDecentOrder}
                 className="sortingbotton"
               >
                 <DecendingIcon />
-              </Button>
-            </Grid>
-            <Grid item xs={6} md={3} sm={4}>
-              {" "}
-              <Button
-                variant="contained"
-                onClick={handleAscOrder}
-                className="sortingbotton"
-              >
-                <AscIcon />
               </Button>
             </Grid>
           </Grid>
@@ -247,14 +269,15 @@ function BotsDashboard() {
               spacing={{ xs: 2, md: 3 }}
               columns={{ xs: 4, sm: 2, md: 12 }}
             >
-              <Grid item xs={6}>
+              <Grid item xs={4}>
                 {" "}
                 <SearchwithIcon
+                  style={{ backgroundColor: "white !important" }}
                   searchvalue={handlesearch}
                   searchdata={searchdata}
                 />
               </Grid>
-              <Grid item xs={6}>
+              <Grid item xs={4}>
                 {" "}
                 <Dropdown
                   selectDropDown={onSelectvalue}
@@ -265,21 +288,30 @@ function BotsDashboard() {
           </Box>
         </Grid>
         <Grid item xs={2}>
-          <Box>
-            <Stack
-              direction="row"
-              spacing={1}
-              alignItems="center"
-              justifyContent={"center"}
-            >
-              <Typography>Hide Bot Name</Typography>
-              <FormControlLabel
-                control={<IOSSwitch onChange={handleSwitch} sx={{ m: 1 }} />}
-              />
-            </Stack>
-          </Box>
+          <Button
+            variant="contained"
+            onClick={handleOpen}
+            className="refreshbotton"
+            startIcon={<AddIcon lg={{ color: "#000" }} />}
+          >
+            Add
+          </Button>
         </Grid>
       </Grid>
+
+      <Box style={{ float: "left" }}>
+        <Stack
+          direction="row"
+          spacing={1}
+          alignItems="center"
+          justifyContent={"center"}
+        >
+          <Typography style={{ fontWeight: "bold" }}>Hide Bot Name</Typography>
+          <FormControlLabel
+            control={<IOSSwitch onChange={handleSwitch} sx={{ m: 1 }} />}
+          />
+        </Stack>
+      </Box>
 
       {searchdata && (
         <Typography mt={10} variant="h5" component="h1">
@@ -344,6 +376,41 @@ function BotsDashboard() {
           </Button>
         </Stack>
       </Box>
+      {/* Modal */}
+      <Modal open={open1} onClose={handleClose}>
+        <Box sx={cardLayout}>
+          <IconButton className="IconButtonWrapper" onClick={handleClose}>
+            <CloseIcon />
+          </IconButton>
+          <div style={{ marginTop: "10%" }}>
+            <Typography
+              style={{
+                fontSize: "16px",
+                color: "#000000",
+              }}
+            >
+              Enter Bot Name
+            </Typography>
+            <div className="wrapperClass">
+              <TextField
+                id="outlined-basic"
+                label="Enter the bot name"
+                className="textFieldWrapper"
+                variant="outlined"
+                onChange={handlechange}
+                value={inputvalue}
+              />
+              <Button
+                variant="contained"
+                // onClick={handlebutton}
+                className="submitButton"
+               >
+                Submit
+              </Button>
+            </div>
+          </div>
+        </Box>
+      </Modal>
     </Box>
   );
 }

@@ -17,3 +17,25 @@
   width: 388px;
   padding: 5px !important;
 }
+.deleteButton {
+  width: 133px !important;
+  height: 57px !important;
+  background-color: #fe9933 !important;
+  color: #fff !important;
+}
+.IconWrapperClass {
+  float: right;
+  bottom: 10px;
+  color: #fe9933 !important;
+}
+.textDesign {
+  font-size: 16px !important;
+  text-align: center !important;
+  color: #000000 !important;
+  font-weight: bold !important ;
+}
+.descriptionTextClass {
+  font-size: 14px !important;
+  text-align: center !important;
+  color: #000000 !important;
+}

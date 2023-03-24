@@ -1,6 +1,19 @@
 .searchfilterwrapper {
   display: flex;
 }
+.wrapperClass {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 1%;
+}
+
+.submitButton {
+  background-color: #fe9933 !important;
+  color: #fff !important;
+  margin-left: 18px !important;
+  width: 151px !important;
+  height: 55px !important;
+}
 
 .refreshbotton {
   width: 140px !important;
@@ -36,6 +49,18 @@
 }
 .gridCardBody {
   padding-top: 15px !important;
+}
+.IconButtonWrapper {
+  float: right;
+  bottom: 10px;
+  color: #fe9933 !important;
+}
+.textFieldWrapper {
+  width: 298px;
+  height: 59px;
+  border-color: #d5d5d5;
+  border-width: 1px;
+  border-radius: "5px";
 }
 @media only screen and (min-width: 800px) and (max-width: 1100px) {
   .refreshbotton {
