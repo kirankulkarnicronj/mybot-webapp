@@ -295,13 +295,20 @@ export default function Cards({ itemdata, checked }) {
                   <b>{(itemdata?.lastCheckIn).substring(5, 19) || ""}</b>
                 </Typography>
               </Grid>
+
+              <Grid item xs={8} className="gridCardBody">
+                <Typography size="small" className="cardHeaders">
+                 Activity:{" "}
+                  <b>Building A House</b>
+                </Typography>
+              </Grid>
             </Grid>
           </CardActions>
         </CardContent>
         <CardActions>
           <Grid
             container
-            spacing={{ xs: 2, md: 3 }}
+            spacing={{ xs: 1, md: 1 }}
             columns={{ xs: 4, sm: 4, md: 12 }}
             style={{ textAlign: "center", marginTop: "-14px" }}
           >
@@ -339,19 +346,13 @@ export default function Cards({ itemdata, checked }) {
           </IconButton>
           <Typography
           className="textDesign"
-            // style={{
-            //   fontSize: "16px",
-            //   textAlign: "center",
-            //   color: "#000000",
-            //   fontWeight: "bold",
-            // }}
           >
             Delete
           </Typography>
           <Typography
             sx={{ mt: 2 }}
             className="descriptionTextClass"
-            // style={{ fontSize: "14px", textAlign: "center", color: "#000000" }}
+
           >
             Are you sure you want to delete this bot
           </Typography>
