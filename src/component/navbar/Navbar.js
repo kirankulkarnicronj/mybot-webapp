@@ -12,6 +12,9 @@ import DrawerComponent from "../Drawer/Drawer";
 import "./navbar.css";
 import { useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import DiscordIcon from "../svgIcons/DiscordIcon"
+import LogoutIcon from "../svgIcons/LogOutIcon";
+
 function Navbar() {
   const theme = useTheme();
   const navigate = useNavigate();
@@ -43,22 +46,25 @@ function Navbar() {
           <DrawerComponent />
         ) : (
           <div className="navlinks">
+     
+            <Button
+              variant="contained"
+              onClick={handleclick}
+              className="navbarsubmitbutton"
+              startIcon={<DiscordIcon/>}
+            >
+              Join Discord
+            </Button>
             {backtohome && (
               <Button
                 variant="contained"
                 onClick={handlebackclick}
                 className="navbarsubmitbutton"
+                startIcon={<LogoutIcon/>}
               >
-                Back to Homepage
+                Logout
               </Button>
             )}
-            <Button
-              variant="contained"
-              onClick={handleclick}
-              className="navbarsubmitbutton"
-            >
-              Join Discord
-            </Button>
           </div>
         )}
       </Toolbar>

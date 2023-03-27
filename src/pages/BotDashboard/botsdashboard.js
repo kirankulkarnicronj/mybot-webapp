@@ -213,23 +213,42 @@ function BotsDashboard() {
   return (
     <Box className="botsdashboardContainer">
       <Box className="botsdashboardicon" onClick={handleBoxClick}>
-        <RefreshIcon />
+        {/* <RefreshIcon /> */}
+      </Box>
+
+      <Box style={{ float: "right",paddingRight: "8px"}}>
+        <Stack
+          direction="row"
+          spacing={1}
+          display="flex"
+          alignItems="center"
+          justifyContent={"center"}
+        >
+          <Typography style={{ fontWeight: "bold" }}>Hide Bot Name</Typography>
+          <FormControlLabel
+            control={<IOSSwitch onChange={handleSwitch} sx={{ m: 1 }} />}
+          />
+        </Stack>
       </Box>
 
       <Grid
         container
-        spacing={{ xs: 2, md: 3 }}
-        columns={{ xs: 4, sm: 2, md: 12 }}
+        // spacing={{ xs: 1, md: 1, xl: 1, lg: 1 }}
+        // columns={{ xs: 4, sm: 2, md: 12 }}
+        display="flex"
         alignItems="center"
-        justifyContent="center"
+        // justifyContent="center"
       >
-        <Grid item xs={4}>
+        <Grid item xs={12} md={5} lg={4}>
           <Grid
             container
-            rowSpacing={1}
-            columnSpacing={{ xs: 1, sm: 2, md: 3 }}
+            display="flex"
+            alignItems="center"
+            justifyContent="center"
+            // rowSpacing={0}
+            // columnSpacing={{ xs: 1, sm: 1, md: 3 }}
           >
-            <Grid item xs={6} md={4} sm={4}>
+            <Grid item xs={4} md={4}>
               <Button
                 variant="contained"
                 className="refreshbotton"
@@ -240,7 +259,7 @@ function BotsDashboard() {
               </Button>
             </Grid>
 
-            <Grid item xs={6} md={4} sm={4}>
+            <Grid item xs={4} md={3}>
               <Button
                 variant="contained"
                 className="refreshbotton"
@@ -250,7 +269,7 @@ function BotsDashboard() {
               </Button>
             </Grid>
 
-            <Grid item xs={5} md={2} sm={3}>
+            <Grid item xs={4} md={1}>
               <Button
                 variant="contained"
                 onClick={handleDecentOrder}
@@ -262,14 +281,17 @@ function BotsDashboard() {
           </Grid>
         </Grid>
 
-        <Grid item xs={6}>
+        <Grid item xs={12} md={5} lg={6}>
           <Box>
             <Grid
               container
-              spacing={{ xs: 2, md: 3 }}
-              columns={{ xs: 4, sm: 2, md: 12 }}
+              spacing={{ xs: 2, md: 2 }}
+              // columns={{ xs: 4, sm: 2, md: 12 }}
+              display="flex"
+              alignItems="center"
+              justifyContent="flex-start"
             >
-              <Grid item xs={4}>
+              <Grid item xs={12} md={6}>
                 {" "}
                 <SearchwithIcon
                   style={{ backgroundColor: "white !important" }}
@@ -277,7 +299,7 @@ function BotsDashboard() {
                   searchdata={searchdata}
                 />
               </Grid>
-              <Grid item xs={4}>
+              <Grid item xs={12} md={6}>
                 {" "}
                 <Dropdown
                   selectDropDown={onSelectvalue}
@@ -287,31 +309,34 @@ function BotsDashboard() {
             </Grid>
           </Box>
         </Grid>
-        <Grid item xs={2}>
-          <Button
-            variant="contained"
-            onClick={handleOpen}
-            className="refreshbotton"
-            startIcon={<AddIcon lg={{ color: "#000" }} />}
-          >
-            Add
-          </Button>
+
+        <Grid item xs={12} md={2} lg={1}>
+          <Box>
+            <Grid
+              container
+              spacing={{ xs: 1, md: 1 }}
+              columns={{ xs: 4, sm: 2, md: 12 }}
+              display="flex"
+              alignItems="center"
+              justifyContent="center"
+            >
+              <Grid item xs={5}>
+                <Button
+                  variant="contained"
+                  onClick={handleOpen}
+                  className="refreshbotton"
+                  startIcon={<AddIcon lg={{ color: "#000" }} />}
+                >
+                  Add
+                </Button>
+              </Grid>
+            </Grid>
+          </Box>
         </Grid>
+
       </Grid>
 
-      <Box style={{ float: "left" }}>
-        <Stack
-          direction="row"
-          spacing={1}
-          alignItems="center"
-          justifyContent={"center"}
-        >
-          <Typography style={{ fontWeight: "bold" }}>Hide Bot Name</Typography>
-          <FormControlLabel
-            control={<IOSSwitch onChange={handleSwitch} sx={{ m: 1 }} />}
-          />
-        </Stack>
-      </Box>
+
 
       {searchdata && (
         <Typography mt={10} variant="h5" component="h1">
@@ -329,7 +354,7 @@ function BotsDashboard() {
       <Box mt={5}>
         <Grid
           container
-          spacing={{ xs: 2, md: 3 }}
+          spacing={{ xs: 2, md: 4 }}
           columns={{ xs: 4, sm: 8, md: 12 }}
           alignItems="center"
           justifyContent="center"
