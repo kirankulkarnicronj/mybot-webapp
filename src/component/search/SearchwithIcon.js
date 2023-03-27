@@ -10,6 +10,7 @@ export default function SearchwithIcon({ searchvalue, searchdata }) {
     <Box sx={{ marginY: 1, width: "100%" }}>
       <TextField
         placeholder="Search using bot name"
+        style={{backgroundColor:"white" ,borderColor:"white"}}
         type="text"
         variant="outlined"
         fullWidth

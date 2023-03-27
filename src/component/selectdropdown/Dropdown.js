@@ -15,6 +15,7 @@ export default function Dropdown({ selectDropDown, selectedvalue }) {
           labelId="demo-simple-select-label"
           id="demo-simple-select"
           value={selectedvalue}
+          style={{backgroundColor:"white",borderColor:"white"}}
           label="Please select"
           onChange={handleChange}
         >
